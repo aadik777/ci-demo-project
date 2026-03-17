@@ -1,13 +1,17 @@
-application: DevOpsTool
-version: 2.0
+name: DevOps Tool Workflow
 
-server_port: 8080
-environment: production
+on:
+  push:
+    branches:
+      - main
 
-database: mysql
-db_host: localhost
-db_port: 3306
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-logging: enabled
-monitoring: active
-backup: daily
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a script
+        run: echo "Hello DevOps"
